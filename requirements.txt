@@ -1,0 +1,4 @@
+kaggle
+ploomber
+pandas
+python-dotenv
