@@ -1,0 +1,17 @@
+# Environment variables
+.env
+
+# Raw data files
+*.csv
+*.xlsx
+*.xls
+
+# Virtual environment
+venv/
+
+# Ploomber output
+*.ipynb
+Data/*
+
+# Metadata files
+*.metadata
