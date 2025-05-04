@@ -1,0 +1,8 @@
+executor: parallel
+tasks:
+  - source: ./etl/extract/extract.py
+    name: extract
+    product:
+      nb: ./etl/extract/output/extract.ipynb
+    params:
+      extract_path: '{{extract_path}}'
