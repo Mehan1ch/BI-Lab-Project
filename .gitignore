@@ -11,7 +11,7 @@ venv/
 
 # Ploomber output
 *.ipynb
-Data/*
+data/*
 
 # Metadata files
 *.metadata
