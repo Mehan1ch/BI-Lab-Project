@@ -1,0 +1,14 @@
+[
+  {
+    "name": "elmoallistair/population-by-age-group-2021",
+    "path": "population/"
+  },
+  {
+    "name": "nelgiriyewithana/global-weather-repository",
+    "path": "weather/"
+  },
+  {
+    "name": "orvile/weather-related-disease-prediction-dataset",
+    "path": "disease/"
+  }
+]
