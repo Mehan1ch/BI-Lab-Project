@@ -3,10 +3,10 @@ upstream = None
 product = None
 extract_path: str | None = None
 
+# %%
 import json
 import os
 
-# %%
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,10 +27,19 @@ if not os.path.exists(extract_path):
 with open("datasets.json", "r") as file:
     datasets = json.load(file)
 
-# Download datasets
 for dataset in datasets:
     dataset_name = dataset["name"]
     dataset_path = os.path.join(extract_path, dataset["path"])
+    alias = dataset["alias"]
+
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
+
     kaggle.api.dataset_download_files(dataset_name, path=dataset_path, unzip=True)
+
+    for file in os.listdir(dataset_path):
+        if file.endswith(".csv"):
+            original_file_path = os.path.join(dataset_path, file)
+            alias_file_path = os.path.join(dataset_path, alias + ".csv")
+            os.rename(original_file_path, alias_file_path)
+            break
