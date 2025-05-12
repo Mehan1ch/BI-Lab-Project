@@ -2,3 +2,5 @@ kaggle
 ploomber
 pandas
 python-dotenv
+sqlalchemy
+pymysql
