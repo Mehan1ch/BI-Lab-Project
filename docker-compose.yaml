@@ -13,4 +13,4 @@ services:
 
 networks:
   BiLabNetwork:
-    internal: true
+    driver: bridge

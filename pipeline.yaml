@@ -14,3 +14,19 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/age_groups.py
+    name: age_groups
+    product:
+      data: '{{transform_path}}/migrations/age_groups.csv'
+      nb: ./etl/transform/migrations/output/age_groups.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/countries.py
+    name: countries
+    product:
+      data: '{{transform_path}}/migrations/countries.csv'
+      nb: ./etl/transform/migrations/output/countries.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
