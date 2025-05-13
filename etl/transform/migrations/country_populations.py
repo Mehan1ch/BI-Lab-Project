@@ -51,9 +51,9 @@ def create_country_populations_table(population: DataFrame, age_groups: DataFram
 
             # Append the row to the output data
             country_populations_data.append({
-                "Country_id": country_id,
-                "Age_group_id": age_group_id,
-                "Amount": amount
+                "country_id": country_id,
+                "age_group_id": age_group_id,
+                "amount": amount
             })
 
     # Create a DataFrame for the country populations table
