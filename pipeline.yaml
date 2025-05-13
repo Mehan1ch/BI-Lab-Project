@@ -14,6 +14,13 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/temperature_categories.py
+    name: create_temperature_categories
+    product:
+      data: '{{transform_path}}/migrations/temperature_categories.csv'
+      nb: ./etl/transform/migrations/output/temperature_categories.ipynb
+    params:
+      transform_path: '{{transform_path}}'
   - source: ./etl/transform/migrations/age_groups.py
     name: create_age_groups
     product:
