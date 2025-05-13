@@ -15,7 +15,7 @@ tasks:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
   - source: ./etl/transform/migrations/age_groups.py
-    name: age_groups
+    name: create_age_groups
     product:
       data: '{{transform_path}}/migrations/age_groups.csv'
       nb: ./etl/transform/migrations/output/age_groups.ipynb
@@ -23,10 +23,18 @@ tasks:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
   - source: ./etl/transform/migrations/countries.py
-    name: countries
+    name: create_countries
     product:
       data: '{{transform_path}}/migrations/countries.csv'
       nb: ./etl/transform/migrations/output/countries.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/country_populations.py
+    name: create_country_populations
+    product:
+      data: '{{transform_path}}/migrations/country_populations.csv'
+      nb: ./etl/transform/migrations/output/country_populations.ipynb
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
