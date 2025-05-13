@@ -28,6 +28,13 @@ tasks:
       nb: ./etl/transform/migrations/output/wind_levels.ipynb
     params:
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/humidity_levels.py
+    name: create_humidity_levels
+    product:
+      data: '{{transform_path}}/migrations/humidity_levels.csv'
+      nb: ./etl/transform/migrations/output/humidity_levels.ipynb
+    params:
+      transform_path: '{{transform_path}}'
   - source: ./etl/transform/migrations/age_groups.py
     name: create_age_groups
     product:
