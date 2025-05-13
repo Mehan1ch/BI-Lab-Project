@@ -60,3 +60,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/timezones.py
+    name: create_timezones
+    product:
+      data: '{{transform_path}}/migrations/timezones.csv'
+      nb: ./etl/transform/migrations/output/timezones.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
