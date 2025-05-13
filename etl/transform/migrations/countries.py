@@ -1,7 +1,7 @@
 # %% tags=["parameters"]
 from typing import List
 
-upstream = ['extract']
+upstream = ['extract', 'clean_weather']
 product: List[str] | None = None
 extract_path: str | None = None
 transform_path: str | None = None
@@ -12,20 +12,24 @@ from etl.transform.utils.utils import load_csv, save_to_csv
 
 
 def create_countries_table(population: DataFrame, weather: DataFrame) -> DataFrame:
-    # Group by country and calculate total population
-    grouped = population.groupby('Country')['Total'].sum().reset_index()
-
-    # Add Id column
-    grouped.insert(0, 'Id', range(1, len(grouped) + 1))
-
-    # Rename columns to match the desired format
-    grouped.columns = ['id', 'name', 'total_population']
-
-    return grouped
+    population_countries = population['Country'].unique()
+    weather_countries = weather['country'].unique()
+    countries = sorted(set(population_countries) | set(weather_countries))
+    countries_data = []
+    for idx, country in enumerate(countries, start=1):
+        countries_data.append({
+            "id": idx,
+            "name": country,
+            "total_population": population[population['Country'] == country][
+                'Total'].sum() if country in population_countries else 0,
+        })
+    countries_df = DataFrame(countries_data)
+    return countries_df
 
 
 population_path = extract_path + "/population/population.csv"
-weather_path = extract_path + "/weather/weather.csv"
+weather_path = transform_path + "/clean/clean_weather.csv"
 population_df: DataFrame = load_csv(population_path)
-df: DataFrame = create_countries_table(population_df, population_df)
+weather_df: DataFrame = load_csv(weather_path)
+df: DataFrame = create_countries_table(population_df, weather_df)
 save_to_csv(df, product['data'])
