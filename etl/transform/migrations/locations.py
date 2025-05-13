@@ -50,7 +50,7 @@ def create_locations_table(weather: DataFrame, timezones: DataFrame, countries: 
     return locations_df
 
 
-weather_path = transform_path + "/clean/clean_weather.csv"
+weather_path = transform_path + "/clean/weather.csv"
 timezones_path = transform_path + "/migrations/timezones.csv"
 countries_path = transform_path + "/migrations/countries.csv"
 weather_df: DataFrame = load_csv(weather_path)

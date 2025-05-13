@@ -88,7 +88,7 @@ def create_weather_table(weather: DataFrame, location: DataFrame, temperature_ca
     return weather_table
 
 
-weather_path = transform_path + "/clean/clean_weather.csv"
+weather_path = transform_path + "/clean/weather.csv"
 location_path = transform_path + "/migrations/locations.csv"
 temperature_category_path = transform_path + "/migrations/temperature_categories.csv"
 weather_condition_path = transform_path + "/migrations/weather_conditions.csv"

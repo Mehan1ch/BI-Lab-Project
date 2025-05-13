@@ -1,5 +1,5 @@
 # %% tags=["parameters"]
-upstream = ['extract']
+upstream = ['clean_disease']
 product: list[str] | None = None
 extract_path: str | None = None
 transform_path: str | None = None
@@ -22,7 +22,7 @@ def create_prognosis_table(disease: DataFrame) -> DataFrame:
     return prognosis_df
 
 
-disease_path = extract_path + "/disease/disease.csv"
+disease_path = transform_path + "/clean/disease.csv"
 disease_df = load_csv(disease_path)
 df: DataFrame = create_prognosis_table(disease_df)
 save_to_csv(df, product['data'])

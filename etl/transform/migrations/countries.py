@@ -28,7 +28,7 @@ def create_countries_table(population: DataFrame, weather: DataFrame) -> DataFra
 
 
 population_path = extract_path + "/population/population.csv"
-weather_path = transform_path + "/clean/clean_weather.csv"
+weather_path = transform_path + "/clean/weather.csv"
 population_df: DataFrame = load_csv(population_path)
 weather_df: DataFrame = load_csv(weather_path)
 df: DataFrame = create_countries_table(population_df, weather_df)

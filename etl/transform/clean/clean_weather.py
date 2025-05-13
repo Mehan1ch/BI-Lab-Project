@@ -1,38 +1,14 @@
 # %% tags=["parameters"]
-from typing import List
-
 upstream = ['extract']
-product: List[str] | None = None
+product: list[str] | None = None
 extract_path: str | None = None
 transform_path: str | None = None
 
 # %%
 from pandas import DataFrame
-from etl.transform.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv, rename_columns
 
-
-def fix_column_names(weather_df: DataFrame, column: str, replacements: dict) -> DataFrame:
-    """
-    Replace country names in the DataFrame based on a dictionary of replacements.
-
-    Args:
-        weather_df (DataFrame): The DataFrame containing a 'country' column.
-        replacements (dict): A dictionary where keys are old names and values are new names.
-        column (str): The name of the column to be fixed.
-
-    Returns:
-        DataFrame: The updated DataFrame with replaced country names.
-    """
-    weather_df[column] = weather_df[column].replace(replacements)
-    return weather_df
-
-
-def remove_quotes_from_columns(weather_df: DataFrame, columns: List[str]) -> DataFrame:
-    for column in columns:
-        if column in weather_df.columns:
-            weather_df[column] = weather_df[column].str.replace('"', '', regex=False)
-    return weather_df
-
+from etl.transform.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv, rename_columns, \
+    remove_quotes_from_columns, fix_column_names
 
 columns_to_remove = [
     "temperature_fahrenheit",

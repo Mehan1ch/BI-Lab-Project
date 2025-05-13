@@ -9,8 +9,16 @@ tasks:
   - source: ./etl/transform/clean/clean_weather.py
     name: clean_weather
     product:
-      data: '{{transform_path}}/clean/clean_weather.csv'
+      data: '{{transform_path}}/clean/weather.csv'
       nb: ./etl/transform/clean/output/clean_weather.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
+  - source: ./etl/transform/clean/clean_disease.py
+    name: clean_disease
+    product:
+      data: '{{transform_path}}/clean/disease.csv'
+      nb: ./etl/transform/clean/output/clean_disease.ipynb
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'

@@ -23,7 +23,7 @@ def create_weather_conditions_table(weather: DataFrame) -> DataFrame:
     return prognosis_df
 
 
-weather_path = transform_path + "/clean/clean_weather.csv"
+weather_path = transform_path + "/clean/weather.csv"
 weather_df = load_csv(weather_path)
 df: DataFrame = create_weather_conditions_table(weather_df)
 save_to_csv(df, product['data'])
