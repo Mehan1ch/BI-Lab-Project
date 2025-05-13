@@ -131,3 +131,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/diagnoses.py
+    name: create_diagnoses
+    product:
+      data: '{{transform_path}}/migrations/diagnoses.csv'
+      nb: ./etl/transform/migrations/output/diagnoses.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
