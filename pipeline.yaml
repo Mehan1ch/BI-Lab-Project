@@ -21,6 +21,13 @@ tasks:
       nb: ./etl/transform/migrations/output/temperature_categories.ipynb
     params:
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/wind_levels.py
+    name: create_wind_levels
+    product:
+      data: '{{transform_path}}/migrations/wind_levels.csv'
+      nb: ./etl/transform/migrations/output/wind_levels.ipynb
+    params:
+      transform_path: '{{transform_path}}'
   - source: ./etl/transform/migrations/age_groups.py
     name: create_age_groups
     product:
