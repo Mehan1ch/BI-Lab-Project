@@ -84,3 +84,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/moon_phases.py
+    name: create_moon_phases
+    product:
+      data: '{{transform_path}}/migrations/moon_phases.csv'
+      nb: ./etl/transform/migrations/output/moon_phases.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
