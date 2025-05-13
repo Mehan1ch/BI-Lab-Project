@@ -1,6 +1,6 @@
-kaggle
-ploomber
-pandas
-python-dotenv
-sqlalchemy
-pymysql
+kaggle~=1.7.4.2
+ploomber~=0.23.3
+pandas~=2.2.3
+python-dotenv~=1.1.0
+sqlalchemy~=2.0.40
+pymysql~=1.1.0
