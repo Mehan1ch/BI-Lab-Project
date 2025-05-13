@@ -1,5 +1,5 @@
 # %% tags=["parameters"]
-upstream = ['extract']
+upstream = ['clean_weather']
 product: list[str] | None = None
 extract_path: str | None = None
 transform_path: str | None = None
@@ -23,7 +23,7 @@ def create_timezones_table(weather: DataFrame) -> DataFrame:
     return prognosis_df
 
 
-weather_path = extract_path + "/weather/weather.csv"
+weather_path = transform_path + "/clean/clean_weather.csv"
 weather_df = load_csv(weather_path)
 df: DataFrame = create_timezones_table(weather_df)
 save_to_csv(df, product['data'])
