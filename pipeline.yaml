@@ -107,3 +107,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/locations.py
+    name: create_locations
+    product:
+      data: '{{transform_path}}/migrations/locations.csv'
+      nb: ./etl/transform/migrations/output/locations.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
