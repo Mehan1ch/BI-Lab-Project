@@ -11,18 +11,19 @@ from pandas import DataFrame
 from etl.transform.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv
 
 
-def fix_country_names(weather_df: DataFrame, replacements: dict) -> DataFrame:
+def fix_column_names(weather_df: DataFrame, column: str, replacements: dict) -> DataFrame:
     """
     Replace country names in the DataFrame based on a dictionary of replacements.
 
     Args:
         weather_df (DataFrame): The DataFrame containing a 'country' column.
         replacements (dict): A dictionary where keys are old names and values are new names.
+        column (str): The name of the column to be fixed.
 
     Returns:
         DataFrame: The updated DataFrame with replaced country names.
     """
-    weather_df['country'] = weather_df['country'].replace(replacements)
+    weather_df[column] = weather_df[column].replace(replacements)
     return weather_df
 
 
@@ -30,22 +31,6 @@ def remove_quotes_from_columns(weather_df: DataFrame, columns: List[str]) -> Dat
     for column in columns:
         if column in weather_df.columns:
             weather_df[column] = weather_df[column].str.replace('"', '', regex=False)
-    return weather_df
-
-
-def fix_weather_conditions(weather_df: DataFrame, replacements: dict) -> DataFrame:
-    """
-    Replace weather conditions in the DataFrame based on a dictionary of replacements.
-
-    Args:
-        weather_df (DataFrame): The DataFrame containing a 'weather' column.
-        replacements (dict): A dictionary where keys are old conditions and values are new conditions.
-
-    Returns:
-        DataFrame: The updated DataFrame with replaced weather conditions.
-    """
-
-    weather_df['condition_text'] = weather_df['condition_text'].replace(replacements)
     return weather_df
 
 
@@ -104,12 +89,19 @@ condition_replacements = {
     "Partly Cloudy": "Partly cloudy",
 }
 
+location_replacements = {
+    "Addis Abeba": "Addis Ababa",
+    "Beijing Shi": "Beijing",
+    "Kuwait City": "Kuwait",
+}
+
 weather_path = extract_path + '/weather/weather.csv'
 population_path = extract_path + '/population/population.csv'
 population_df = load_csv(population_path)
 df: DataFrame = load_csv(weather_path)
 df = remove_unnecessary_columns(df, columns_to_remove)
 df = remove_quotes_from_columns(df, ["country"])
-df = fix_country_names(df, country_names_to_replace)
-df = fix_weather_conditions(df, condition_replacements)
+df = fix_column_names(df, 'country', country_names_to_replace)
+df = fix_column_names(df, 'condition_text', condition_replacements)
+df = fix_column_names(df, 'location_name', location_replacements)
 save_to_csv(df, product['data'])
