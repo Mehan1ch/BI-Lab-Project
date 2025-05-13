@@ -8,7 +8,7 @@ transform_path: str | None = None
 
 # %%
 from pandas import DataFrame
-from etl.transform.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv
+from etl.transform.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv, rename_columns
 
 
 def fix_column_names(weather_df: DataFrame, column: str, replacements: dict) -> DataFrame:
@@ -95,12 +95,18 @@ location_replacements = {
     "Kuwait City": "Kuwait",
 }
 
+columns_to_rename = {
+    'air_quality_us-epa-index': 'air_quality_us_epa_index',
+    'air_quality_gb-defra-index': 'air_quality_gb_defra_index',
+}
+
 weather_path = extract_path + '/weather/weather.csv'
 population_path = extract_path + '/population/population.csv'
 population_df = load_csv(population_path)
 df: DataFrame = load_csv(weather_path)
 df = remove_unnecessary_columns(df, columns_to_remove)
 df = remove_quotes_from_columns(df, ["country"])
+df = rename_columns(df, columns_to_rename)
 df = fix_column_names(df, 'country', country_names_to_replace)
 df = fix_column_names(df, 'condition_text', condition_replacements)
 df = fix_column_names(df, 'location_name', location_replacements)

@@ -115,3 +115,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/weather.py
+    name: create_weather
+    product:
+      data: '{{transform_path}}/migrations/weather.csv'
+      nb: ./etl/transform/migrations/output/weather.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'

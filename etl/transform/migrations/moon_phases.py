@@ -16,7 +16,7 @@ def create_moon_phases_table(weather: DataFrame) -> DataFrame:
     unique_names.sort()
 
     # Create the prognosis table
-    prognosis_table = [{"id": idx + 1, "moon_phase": phase} for idx, phase in enumerate(unique_names)]
+    prognosis_table = [{"id": idx + 1, "phase": phase} for idx, phase in enumerate(unique_names)]
 
     # Convert to DataFrame
     prognosis_df = DataFrame(prognosis_table)
