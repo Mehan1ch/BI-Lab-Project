@@ -16,7 +16,7 @@ def create_temperature_categories_table() -> DataFrame:
         {"id": 2, "name": "Cold", "range_start": 10, "range_end": 20},
         {"id": 3, "name": "Good", "range_start": 20, "range_end": 27},
         {"id": 4, "name": "Hot", "range_start": 27, "range_end": 35},
-        {"id": 5, "name": "Very Hot", "Range Start": 35, "range_end": None},
+        {"id": 5, "name": "Very Hot", "range_start": 35, "range_end": None},
     ]
 
     # Convert the list of dictionaries to a DataFrame
