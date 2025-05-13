@@ -52,3 +52,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/prognosis.py
+    name: create_prognosis
+    product:
+      data: '{{transform_path}}/migrations/prognosis.csv'
+      nb: ./etl/transform/migrations/output/prognosis.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
