@@ -76,3 +76,11 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/transform/migrations/wind_directions.py
+    name: create_wind_directions
+    product:
+      data: '{{transform_path}}/migrations/wind_directions.csv'
+      nb: ./etl/transform/migrations/output/wind_directions.ipynb
+    params:
+      extract_path: '{{extract_path}}'
+      transform_path: '{{transform_path}}'
