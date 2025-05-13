@@ -16,7 +16,7 @@ def create_timezones_table(weather: DataFrame) -> DataFrame:
     unique_names.sort()
 
     # Create the prognosis table
-    prognosis_table = [{"id": idx + 1, "name": name} for idx, name in enumerate(unique_names)]
+    prognosis_table = [{"id": idx + 1, "timezone": name} for idx, name in enumerate(unique_names)]
 
     # Convert to DataFrame
     prognosis_df = DataFrame(prognosis_table)
