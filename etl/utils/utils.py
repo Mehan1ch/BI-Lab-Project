@@ -22,7 +22,7 @@ def load_csv(input_path: str) -> DataFrame:
     return pandas.read_csv(input_path)
 
 
-def fix_column_names(dataframe: DataFrame, column: str, replacements: dict) -> DataFrame:
+def replace_column_content(dataframe: DataFrame, column: str, replacements: dict) -> DataFrame:
     dataframe[column] = dataframe[column].replace(replacements)
     return dataframe
 
@@ -31,6 +31,35 @@ def remove_quotes_from_columns(dataframe: DataFrame, columns: List[str]) -> Data
     for column in columns:
         if column in dataframe.columns:
             dataframe[column] = dataframe[column].str.replace('"', '', regex=False)
+    return dataframe
+
+
+def convert_to_24_hour_format(time_str: str) -> str:
+    """
+    Converts a 12-hour time format string to a 24-hour format string.
+
+    :param time_str: Time string in 12-hour format (e.g., "02:30 PM")
+    :return: Time string in 24-hour format (e.g., "14:30")
+    """
+    if not time_str:
+        return None
+    try:
+        return pandas.to_datetime(time_str).strftime('%H:%M')
+    except ValueError:
+        return None
+
+
+def convert_column_to_time(dataframe: DataFrame, column: str) -> DataFrame:
+    """
+    Converts a specified column in the DataFrame to a time format.
+
+    :param callable:
+    :param dataframe: Input DataFrame
+    :param column: Column name to convert
+    :return: DataFrame with the specified column converted to time format
+    """
+    if column in dataframe.columns:
+        dataframe[column] = dataframe[column].apply(convert_to_24_hour_format)
     return dataframe
 
 

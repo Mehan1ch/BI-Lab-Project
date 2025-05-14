@@ -8,7 +8,7 @@ transform_path: str | None = None
 from pandas import DataFrame
 
 from etl.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv, rename_columns, \
-    remove_quotes_from_columns, fix_column_names
+    remove_quotes_from_columns, replace_column_content, convert_column_to_time
 
 columns_to_remove = [
     "temperature_fahrenheit",
@@ -65,6 +65,21 @@ condition_replacements = {
     "Partly Cloudy": "Partly cloudy",
 }
 
+moonrise_replacements = {
+    "No moonrise": "",
+}
+
+moonset_replacements = {
+    "No moonset": "",
+}
+
+sunrise_replacements = {
+    "No sunrise": "",
+}
+sunset_replacements = {
+    "No sunset": "",
+}
+
 location_replacements = {
     "Addis Abeba": "Addis Ababa",
     "Beijing Shi": "Beijing",
@@ -83,7 +98,15 @@ df: DataFrame = load_csv(weather_path)
 df = remove_unnecessary_columns(df, columns_to_remove)
 df = remove_quotes_from_columns(df, ["country"])
 df = rename_columns(df, columns_to_rename)
-df = fix_column_names(df, 'country', country_names_to_replace)
-df = fix_column_names(df, 'condition_text', condition_replacements)
-df = fix_column_names(df, 'location_name', location_replacements)
+df = replace_column_content(df, 'country', country_names_to_replace)
+df = replace_column_content(df, 'condition_text', condition_replacements)
+df = replace_column_content(df, 'location_name', location_replacements)
+df = replace_column_content(df, 'sunrise', sunrise_replacements)
+df = replace_column_content(df, 'sunset', sunset_replacements)
+df = replace_column_content(df, 'moonrise', moonrise_replacements)
+df = replace_column_content(df, 'moonset', moonset_replacements)
+df = convert_column_to_time(df, 'sunrise')
+df = convert_column_to_time(df, 'sunset')
+df = convert_column_to_time(df, 'moonrise')
+df = convert_column_to_time(df, 'moonset')
 save_to_csv(df, product['data'])
