@@ -8,6 +8,6 @@ class AgeGroup(Base):
     __tablename__ = 'age_groups'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    name = Column(String(255), nullable=False)
     range_start = Column(Float, nullable=True)
     range_end = Column(Float, nullable=True)

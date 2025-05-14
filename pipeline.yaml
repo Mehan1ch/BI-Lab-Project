@@ -147,3 +147,9 @@ tasks:
     params:
       extract_path: '{{extract_path}}'
       transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/age_groups.py
+    name: load_age_groups
+    product:
+      nb: ./etl/load/migrations/output/age_groups.ipynb
+    params:
+      transform_path: '{{transform_path}}'
