@@ -165,3 +165,81 @@ tasks:
       nb: ./etl/load/migrations/output/country_populations.ipynb
     params:
       transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/diagnoses.py
+    name: load_diagnoses
+    product:
+      nb: ./etl/load/migrations/output/diagnoses.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/diagnoses_conditions.py
+    name: load_diagnoses_conditions
+    product:
+      nb: ./etl/load/migrations/output/diagnoses_conditions.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/disease_conditions.py
+    name: load_disease_conditions
+    product:
+      nb: ./etl/load/migrations/output/disease_conditions.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/humidity_levels.py
+    name: load_humidity_levels
+    product:
+      nb: ./etl/load/migrations/output/humidity_levels.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/locations.py
+    name: load_locations
+    product:
+      nb: ./etl/load/migrations/output/locations.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/moon_phases.py
+    name: load_moon_phases
+    product:
+      nb: ./etl/load/migrations/output/moon_phases.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/prognosis.py
+    name: load_prognosis
+    product:
+      nb: ./etl/load/migrations/output/prognosis.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/temperature_categories.py
+    name: load_temperature_categories
+    product:
+      nb: ./etl/load/migrations/output/temperature_categories.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/timezones.py
+    name: load_timezones
+    product:
+      nb: ./etl/load/migrations/output/timezones.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/weather.py
+    name: load_weather
+    product:
+      nb: ./etl/load/migrations/output/weather.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/weather_conditions.py
+    name: load_weather_conditions
+    product:
+      nb: ./etl/load/migrations/output/weather_conditions.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/wind_directions.py
+    name: load_wind_directions
+    product:
+      nb: ./etl/load/migrations/output/wind_directions.ipynb
+    params:
+      transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/wind_levels.py
+    name: load_wind_levels
+    product:
+      nb: ./etl/load/migrations/output/wind_levels.ipynb
+    params:
+      transform_path: '{{transform_path}}'
