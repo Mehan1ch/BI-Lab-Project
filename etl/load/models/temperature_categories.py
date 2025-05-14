@@ -1,0 +1,13 @@
+from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+
+class TemperatureCategory(Base):
+    __tablename__ = 'temperature_categories'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=False)
+    range_start = Column(Float, nullable=True)
+    range_end = Column(Float, nullable=True)
