@@ -7,4 +7,4 @@ class Prognosis(Base):
     __tablename__ = 'prognosis'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    name = Column(String(255), nullable=False)

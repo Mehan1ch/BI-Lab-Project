@@ -7,4 +7,4 @@ class WeatherCondition(Base):
     __tablename__ = 'weather_conditions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    condition = Column(String, nullable=False)
+    condition = Column(String(255), nullable=False)

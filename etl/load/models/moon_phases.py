@@ -7,4 +7,4 @@ class MoonPhase(Base):
     __tablename__ = 'moon_phases'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    phase = Column(String, nullable=False)
+    phase = Column(String(255), nullable=False)

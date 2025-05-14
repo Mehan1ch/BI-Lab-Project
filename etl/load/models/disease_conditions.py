@@ -7,4 +7,4 @@ class DiseaseCondition(Base):
     __tablename__ = 'disease_conditions'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
+    name = Column(String(255), nullable=False)

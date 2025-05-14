@@ -5,6 +5,5 @@ from etl.load.db import Base
 
 class WindDirection(Base):
     __tablename__ = 'wind_directions'
-
     id = Column(Integer, primary_key=True, autoincrement=True)
-    direction = Column(String, nullable=False)
+    direction = Column(String(255), nullable=False)
