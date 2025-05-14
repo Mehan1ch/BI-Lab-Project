@@ -159,3 +159,9 @@ tasks:
       nb: ./etl/load/migrations/output/countries.ipynb
     params:
       transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/country_populations.py
+    name: load_country_populations
+    product:
+      nb: ./etl/load/migrations/output/country_populations.ipynb
+    params:
+      transform_path: '{{transform_path}}'

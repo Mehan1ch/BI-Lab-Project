@@ -11,7 +11,6 @@ from etl.load.db import SessionLocal, engine
 from etl.load.models.countries import Country
 from etl.utils.utils import insert_data_from_csv
 
-# Ensure the table is created
 Country.__table__.create(bind=engine, checkfirst=True)
 
 # Path to the CSV file
