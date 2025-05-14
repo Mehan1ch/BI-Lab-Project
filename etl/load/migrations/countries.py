@@ -19,5 +19,4 @@ csv_file_path = transform_path + "/migrations/countries.csv"
 # Open a database session
 session = SessionLocal()
 
-# Insert data into the AgeGroup table
 insert_data_from_csv(Country, csv_file_path, session)

@@ -1,6 +1,5 @@
 # %% tags=["parameters"]
 
-
 upstream = ['create_country_populations', 'load_age_groups', 'load_countries']
 product: list[str] | None = None
 extract_path: str | None = None
@@ -23,5 +22,4 @@ csv_file_path = transform_path + "/migrations/country_populations.csv"
 # Open a database session
 session = SessionLocal()
 
-# Insert data into the AgeGroup table
 insert_data_from_csv(CountryPopulation, csv_file_path, session)
