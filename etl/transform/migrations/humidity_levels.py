@@ -17,7 +17,7 @@ def create_humidity_levels_table() -> DataFrame:
         {"id": 3, "name": "Ideal", "range_start": 40, "range_end": 60},
         {"id": 4, "name": "Slightly humid", "range_start": 60, "range_end": 70},
         {"id": 5, "name": "Humid", "range_start": 70, "range_end": 80},
-        {"id": 5, "name": "Excessively Humid", "range_start": 80, "range_end": 100},
+        {"id": 6, "name": "Excessively humid", "range_start": 80, "range_end": 100},
     ]
 
     # Convert the list of dictionaries to a DataFrame

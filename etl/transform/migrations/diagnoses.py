@@ -1,6 +1,6 @@
 # %% tags=["parameters"]
-upstream = ['extract', 'create_age_groups', 'create_temperature_categories', 'create_wind_levels',
-            'create_humidity_levels']
+upstream = ['clean_disease', 'create_age_groups', 'create_temperature_categories', 'create_wind_levels',
+            'create_humidity_levels', 'create_prognosis']
 product: list[str] | None = None
 extract_path: str | None = None
 transform_path: str | None = None
@@ -17,19 +17,23 @@ def create_diagnoses_table(diseases: DataFrame, prognosis: DataFrame, age_groups
     # Map age_group_id
     diseases['age_group_id'] = diseases['age'].apply(
         lambda age: age_groups.loc[
-            (age_groups['range_start'] <= age) & (age <= age_groups['range_end']), 'id'
+            ((age_groups['range_start'].isna() | (age_groups['range_start'] <= age)) &
+             (age_groups['range_end'].isna() | (age <= age_groups['range_end']))), 'id'
         ].iloc[0] if not age_groups.loc[
-            (age_groups['range_start'] <= age) & (age <= age_groups['range_end'])
-            ].empty else None
+            ((age_groups['range_start'].isna() | (age_groups['range_start'] <= age)) &
+             (age_groups['range_end'].isna() | (age <= age_groups['range_end'])))
+        ].empty else None
     )
 
     # Map temperature_category_id
     diseases['temperature_category_id'] = diseases['temperature_celsius'].apply(
         lambda temp: temperature_categories.loc[
-            (temperature_categories['range_start'] < temp) & (temp <= temperature_categories['range_end']), 'id'
+            ((temperature_categories['range_start'].isna() | (temperature_categories['range_start'] < temp)) &
+             (temperature_categories['range_end'].isna() | (temp <= temperature_categories['range_end']))), 'id'
         ].iloc[0] if not temperature_categories.loc[
-            (temperature_categories['range_start'] < temp) & (temp <= temperature_categories['range_end'])
-            ].empty else None
+            ((temperature_categories['range_start'].isna() | (temperature_categories['range_start'] < temp)) &
+             (temperature_categories['range_end'].isna() | (temp <= temperature_categories['range_end'])))
+        ].empty else None
     )
 
     # Map humidity_level_id

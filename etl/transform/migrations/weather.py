@@ -35,16 +35,15 @@ def create_weather_table(weather: DataFrame, location: DataFrame, temperature_ca
         moon_phase.set_index('phase')['id']
     )
 
-    # Calculate temperature_category_id
-    weather['temperature_category_id'] = weather.apply(
-        lambda row: temperature_category_df.loc[
-            (temperature_category_df['range_start'] < row['temperature_celsius']) &
-            (row['temperature_celsius'] <= temperature_category_df['range_end']), 'id'
+    # Map temperature_category_id
+    weather['temperature_category_id'] = weather['temperature_celsius'].apply(
+        lambda temp: temperature_category_df.loc[
+            ((temperature_category_df['range_start'].isna() | (temperature_category_df['range_start'] < temp)) &
+             (temperature_category_df['range_end'].isna() | (temp <= temperature_category_df['range_end']))), 'id'
         ].iloc[0] if not temperature_category_df.loc[
-            (temperature_category_df['range_start'] < row['temperature_celsius']) &
-            (row['temperature_celsius'] <= temperature_category_df['range_end'])
-            ].empty else None,
-        axis=1
+            ((temperature_category_df['range_start'].isna() | (temperature_category_df['range_start'] < temp)) &
+             (temperature_category_df['range_end'].isna() | (temp <= temperature_category_df['range_end'])))
+        ].empty else None
     )
 
     # Calculate wind_level_id
