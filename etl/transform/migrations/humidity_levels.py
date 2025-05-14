@@ -6,7 +6,7 @@ transform_path: str | None = None
 # %%
 from pandas import DataFrame
 
-from etl.transform.utils.utils import save_to_csv
+from etl.utils.utils import save_to_csv
 
 
 def create_humidity_levels_table() -> DataFrame:

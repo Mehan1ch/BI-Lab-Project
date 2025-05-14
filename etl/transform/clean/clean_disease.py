@@ -6,7 +6,7 @@ extract_path: str | None = None
 transform_path: str | None = None
 
 # %%
-from etl.transform.utils.utils import load_csv, save_to_csv, rename_columns
+from etl.utils.utils import load_csv, save_to_csv, rename_columns
 
 columns_to_rename = {
     "Age": "age",

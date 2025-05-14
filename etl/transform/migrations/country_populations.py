@@ -8,7 +8,7 @@ transform_path: str | None = None
 
 # %%
 from pandas import DataFrame
-from etl.transform.utils.utils import load_csv, save_to_csv
+from etl.utils.utils import load_csv, save_to_csv
 
 
 def create_country_populations_table(population: DataFrame, age_groups: DataFrame, countries: DataFrame) -> DataFrame:

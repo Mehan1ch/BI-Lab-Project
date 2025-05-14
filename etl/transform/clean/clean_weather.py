@@ -7,7 +7,7 @@ transform_path: str | None = None
 # %%
 from pandas import DataFrame
 
-from etl.transform.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv, rename_columns, \
+from etl.utils.utils import load_csv, remove_unnecessary_columns, save_to_csv, rename_columns, \
     remove_quotes_from_columns, fix_column_names
 
 columns_to_remove = [

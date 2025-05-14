@@ -9,7 +9,7 @@ transform_path: str | None = None
 
 # %%
 from pandas import DataFrame
-from etl.transform.utils.utils import load_csv, save_to_csv
+from etl.utils.utils import load_csv, save_to_csv
 
 
 def create_weather_table(weather: DataFrame, location: DataFrame, temperature_category: DataFrame,

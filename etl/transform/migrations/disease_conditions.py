@@ -7,7 +7,7 @@ transform_path: str | None = None
 # %%
 from pandas import DataFrame
 
-from etl.transform.utils.utils import save_to_csv, load_csv
+from etl.utils.utils import save_to_csv, load_csv
 
 
 def create_disease_conditions_table(disease: DataFrame) -> DataFrame:
