@@ -153,3 +153,9 @@ tasks:
       nb: ./etl/load/migrations/output/age_groups.ipynb
     params:
       transform_path: '{{transform_path}}'
+  - source: ./etl/load/migrations/countries.py
+    name: load_countries
+    product:
+      nb: ./etl/load/migrations/output/countries.ipynb
+    params:
+      transform_path: '{{transform_path}}'

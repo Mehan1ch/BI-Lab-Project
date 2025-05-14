@@ -8,5 +8,5 @@ class Country(Base):
     __tablename__ = 'countries'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String, nullable=False)
-    total_populations = Column(Integer, nullable=False)
+    name = Column(String(255), nullable=False)
+    total_population = Column(Integer, nullable=False)
