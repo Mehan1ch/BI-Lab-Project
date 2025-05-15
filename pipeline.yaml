@@ -243,3 +243,7 @@ tasks:
       nb: ./etl/load/migrations/output/wind_levels.ipynb
     params:
       transform_path: '{{transform_path}}'
+  - source: ./analysis/forecasting.py
+    name: time_series_forecasting
+    product:
+      nb: ./analysis/output/forecasting.ipynb

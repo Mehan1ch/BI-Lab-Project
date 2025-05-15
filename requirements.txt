@@ -6,3 +6,7 @@ sqlalchemy~=2.0.40
 pymysql~=1.1.0
 numpy~=2.2.5
 cryptography~=44.0.3
+tensorflow~=2.19.0
+keras~=3.9.2
+scikit-learn~=1.6.1
+matplotlib~=3.10.3
